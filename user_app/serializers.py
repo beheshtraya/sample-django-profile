@@ -7,11 +7,12 @@ from user_app.models import Profile
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        exclude = ('password',)
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+    age = serializers.IntegerField()
 
     class Meta:
         model = Profile
